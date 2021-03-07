@@ -10,7 +10,7 @@ import (
 	"github.com/algorand/go-algorand-sdk/transaction"
 )
 
-//JeffCoin example
+//Luck Token 
 // based on purestake's submit-a-txn example
 
 const algodAddress = "https://testnet-algorand.api.purestake.io/ps1"
@@ -45,17 +45,17 @@ func main() {
 	}
 
 	// Make transaction
-	coinTotalIssuance := uint64(1000000)
-	coinDecimalsForDisplay := uint32(0) // i.e. 1 accounting unit in a transfer == 1 coin; we are not working in microCoins or anything
+	coinTotalIssuance := uint64(777)
+	coinDecimalsForDisplay := uint32(0) // i.e. 1 accounting unit in a transfer == 1 coin
 	accountsAreDefaultFrozen := false // if you have this coin, you can transact, the freeze manager doesn't need to unfreeze you first
 	managerAddress := ownerAddress // the account issuing this is also the account in charge of managing this
-	assetReserveAddress := "" // there is no asset reserve (the reserve is for informational purposes only anyways)
+	assetReserveAddress := "" // there is no asset reserve 
 	addressWithFreezingPrivileges := ownerAddress // this account can blacklist others from receiving or sending assets, freezing their account
 	addressWithClawbackPrivileges := ownerAddress // this account is allowed to clawback coins from others
-	assetUnitName := "GiveCoin"
-	assetName := "GiveCoin"
+	assetUnitName := "LUCK"
+	assetName := "Luck Token"
 	assetUrl := "https://github.com/jbrown7407"
-	assetMetadataHash := "" // Coin 1
+	assetMetadataHash := "" // LUCK
 	tx, err := transaction.MakeAssetCreateTxn(ownerAddress, txParams.Fee, txParams.LastRound, txParams.LastRound+10, nil, txParams.GenesisID, base64.StdEncoding.EncodeToString(txParams.GenesisHash),
 		coinTotalIssuance, coinDecimalsForDisplay, accountsAreDefaultFrozen, managerAddress, assetReserveAddress, addressWithFreezingPrivileges, addressWithClawbackPrivileges,
 		assetUnitName, assetName, assetUrl, assetMetadataHash)
